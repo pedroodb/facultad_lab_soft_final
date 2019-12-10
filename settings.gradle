@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name='Facultad_lab_soft_final'
