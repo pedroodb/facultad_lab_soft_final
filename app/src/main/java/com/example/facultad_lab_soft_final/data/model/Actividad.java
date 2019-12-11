@@ -2,6 +2,8 @@ package com.example.facultad_lab_soft_final.data.model;
 
 import androidx.annotation.Nullable;
 
+import com.google.common.collect.TreeMultiset;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -55,5 +57,5 @@ public abstract class Actividad implements Serializable, Comparable<Actividad> {
         return this.getDateTime().compareTo(actividad.getDateTime());
     }
 
-    public abstract void listarPorFecha(Map<Date, SortedSet<Actividad>> actividades);
+    public abstract void listarPorFecha(Map<Date, ArrayList<Actividad>> actividades);
 }

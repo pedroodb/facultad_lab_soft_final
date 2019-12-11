@@ -16,10 +16,12 @@ import com.example.facultad_lab_soft_final.Helpers.API;
 import com.example.facultad_lab_soft_final.Helpers.ActivitiesSection;
 import com.example.facultad_lab_soft_final.data.model.Actividad;
 import com.example.facultad_lab_soft_final.data.model.Actividades;
+import com.google.common.collect.TreeMultiset;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
 import java.util.SortedSet;
@@ -55,8 +57,12 @@ public class MainActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 actividades = gson.fromJson(response,Actividades.class);
 
-                for (Map.Entry<Date, SortedSet<Actividad>> entry : actividades.listadoPorFechas().entrySet()) {
-                    sectionAdapter.addSection(new ActivitiesSection(new SimpleDateFormat("dd/MM/yyyy").format(entry.getKey()), new ArrayList<Actividad>(entry.getValue())));
+                for (Map.Entry<Date, ArrayList<Actividad>> entry : actividades.listadoPorFechas().entrySet()) {
+
+                    ArrayList<Actividad> actividades = entry.getValue();
+                    Collections.sort(actividades);
+
+                    sectionAdapter.addSection(new ActivitiesSection(new SimpleDateFormat("dd/MM/yyyy").format(entry.getKey()), actividades));
                 }
                 recyclerView.setAdapter(sectionAdapter);
             }

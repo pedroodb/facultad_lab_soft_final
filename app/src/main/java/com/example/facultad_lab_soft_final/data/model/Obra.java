@@ -1,5 +1,7 @@
 package com.example.facultad_lab_soft_final.data.model;
 
+import com.google.common.collect.TreeMultiset;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
@@ -93,7 +95,7 @@ public class Obra extends Actividad{
     }
 
     @Override
-    public void listarPorFecha(Map<Date, SortedSet<Actividad>> actividades) {
+    public void listarPorFecha(Map<Date, ArrayList<Actividad>> actividades) {
         for (FechaHora fecha_hora : this.fecha_hora) {
 
             ArrayList<FechaHora> fechaUnica = new ArrayList<FechaHora>();
@@ -103,7 +105,7 @@ public class Obra extends Actividad{
             if (actividades.containsKey(fecha_hora.getDate())) {
                 actividades.get(fecha_hora.getDate()).add(obra);
             } else {
-                SortedSet<Actividad> lista = new TreeSet<Actividad>();
+                ArrayList<Actividad> lista = new ArrayList<Actividad>();
                 lista.add(obra);
                 actividades.put(fecha_hora.getDate(),lista);
             }
