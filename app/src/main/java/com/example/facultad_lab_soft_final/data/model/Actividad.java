@@ -1,6 +1,8 @@
 package com.example.facultad_lab_soft_final.data.model;
 
-public abstract class Actividad {
+import java.io.Serializable;
+
+public abstract class Actividad implements Serializable {
 
     int id;
     String nombre;

@@ -4,12 +4,15 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 
+import com.example.facultad_lab_soft_final.data.model.Actividad;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -39,9 +42,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Carga los marcadores de las obras
+        ArrayList<Actividad> actividades = (ArrayList<Actividad>) getIntent().getSerializableExtra("actividades");
+        for (Actividad actividad : actividades) {
+            LatLng marker = new LatLng(actividad.getUbicacion().getLatitud(), actividad.getUbicacion().getLongitud());
+            mMap.addMarker(new MarkerOptions().position(marker).title(actividad.getNombre()));
+        }
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(actividades.get(0).getUbicacion().getLatitud(),actividades.get(0).getUbicacion().getLongitud()),13));
     }
 }
