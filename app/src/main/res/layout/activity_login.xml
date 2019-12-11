@@ -17,8 +17,6 @@
         android:layout_height = "wrap_content"
         android:id = "@+id/title"
         android:textSize = "30dp"
-        app:layout_alignParentTop = "true"
-        app:layout_centerHorizontal = "true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
