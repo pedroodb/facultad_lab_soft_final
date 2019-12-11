@@ -31,6 +31,7 @@ public class ActivitiesSection extends Section {
 
         final View view;
         final TextView title;
+        final TextView time;
         final TextView description;
         final TextView location;
 
@@ -38,6 +39,7 @@ public class ActivitiesSection extends Section {
             super(view);
             this.view = view;
             this.title = view.findViewById(R.id.title);
+            this.time = view.findViewById(R.id.time);
             this.description = view.findViewById(R.id.description);
             this.location = view.findViewById(R.id.location);
         }
@@ -69,6 +71,7 @@ public class ActivitiesSection extends Section {
 
         Actividad activity = actividades.get(i);
         itemViewHolder.title.setText(activity.getNombre());
+        itemViewHolder.time.setText(activity.getHora());
         itemViewHolder.description.setText(activity.getDescripcion());
         itemViewHolder.location.setText(activity.getUbicacion().getDescripcion());
     }

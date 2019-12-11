@@ -1,20 +1,23 @@
 package com.example.facultad_lab_soft_final.data.model;
 
+import androidx.annotation.Nullable;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Map;
+import java.util.SortedSet;
 
-public abstract class Actividad implements Serializable {
+public abstract class Actividad implements Serializable, Comparable<Actividad> {
 
     int id;
     String nombre;
     String descripcion;
-    Ubicacion ubicacion;
 
-    public Actividad(int id, String nombre, String descripcion, Ubicacion ubicacion) {
+    public Actividad(int id, String nombre, String descripcion) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.ubicacion = ubicacion;
     }
 
     public int getId() {
@@ -41,13 +44,16 @@ public abstract class Actividad implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Ubicacion getUbicacion() {
-        return ubicacion;
+    public abstract Ubicacion getUbicacion();
+
+    public abstract String getHora();
+
+    public abstract Date getDateTime();
+
+    @Override
+    public int compareTo(Actividad actividad) {
+        return this.getDateTime().compareTo(actividad.getDateTime());
     }
 
-    public void setUbicacion(Ubicacion ubicacion) {
-        this.ubicacion = ubicacion;
-    }
-
-    //public abstract void listarPorFecha(ArrayList<Actividad> actividades);
+    public abstract void listarPorFecha(Map<Date, SortedSet<Actividad>> actividades);
 }

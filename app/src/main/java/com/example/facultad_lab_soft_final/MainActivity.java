@@ -14,8 +14,16 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.example.facultad_lab_soft_final.Helpers.API;
 import com.example.facultad_lab_soft_final.Helpers.ActivitiesSection;
+import com.example.facultad_lab_soft_final.data.model.Actividad;
 import com.example.facultad_lab_soft_final.data.model.Actividades;
 import com.google.gson.Gson;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Map;
+import java.util.SortedSet;
 
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
@@ -37,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Create an instance of SectionedRecyclerViewAdapter
         sectionAdapter = new SectionedRecyclerViewAdapter();
 
         // Realiza request de actividades
@@ -49,9 +56,10 @@ public class MainActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 actividades = gson.fromJson(response,Actividades.class);
 
-                // Add your Sections
-                sectionAdapter.addSection(new ActivitiesSection("Lunes 1ro de mayo",actividades.getActividades()));
-                sectionAdapter.addSection(new ActivitiesSection("Miercoles 3ro de febrero",actividades.getActividades()));
+                Map<Date, SortedSet<Actividad>> entry2 = actividades.listadoPorFechas();
+                for (Map.Entry<Date, SortedSet<Actividad>> entry : actividades.listadoPorFechas().entrySet()) {
+                    sectionAdapter.addSection(new ActivitiesSection(new SimpleDateFormat("dd/MM/yyyy").format(entry.getKey()), new ArrayList<Actividad>(entry.getValue())));
+                }
                 recyclerView.setAdapter(sectionAdapter);
             }
         });

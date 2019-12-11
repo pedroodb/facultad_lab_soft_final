@@ -1,6 +1,12 @@
 package com.example.facultad_lab_soft_final.data.model;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeMap;
 
 public class Actividades {
 
@@ -33,5 +39,15 @@ public class Actividades {
 
     public void setObras(ArrayList<Obra> obras) {
         this.obras = obras;
+    }
+
+    public Map<Date, SortedSet<Actividad>> listadoPorFechas(){
+        Map<Date, SortedSet<Actividad>> listado = new TreeMap<Date, SortedSet<Actividad>>();
+
+        for (Actividad actividad : this.getActividades()) {
+            actividad.listarPorFecha(listado);
+        }
+
+        return listado;
     }
 }
