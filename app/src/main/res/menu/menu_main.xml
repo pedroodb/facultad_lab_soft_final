@@ -4,9 +4,9 @@
 
     <item
         android:id="@+id/menu_item"
-        android:icon="@android:drawable/btn_star_big_on"
+        android:icon="@android:drawable/ic_popup_reminder"
+        android:onClick="openNotifications"
         android:title="Notificaciones"
-        app:showAsAction="always"
-        android:onClick="openNotifications" />
+        app:showAsAction="always" />
 
 </menu>
