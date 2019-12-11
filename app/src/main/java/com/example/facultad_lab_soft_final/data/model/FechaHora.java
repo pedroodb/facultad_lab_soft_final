@@ -43,7 +43,7 @@ public class FechaHora implements Serializable {
     }
 
     public Date getDateTime() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         Date date = new Date();
         try {
             date = formatter.parse(fecha + " " + hora);
