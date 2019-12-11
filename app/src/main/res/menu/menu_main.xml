@@ -6,6 +6,7 @@
         android:id="@+id/menu_item"
         android:icon="@android:drawable/btn_star_big_on"
         android:title="Notificaciones"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:onClick="openNotifications" />
 
 </menu>
