@@ -1,10 +1,7 @@
 package com.example.facultad_lab_soft_final.data.model;
 
-public class Obra {
-    int id;
-    String nombre;
-    String descripcion;
-    UbicacionObra ubicacion;
+public class Obra extends Actividad{
+
     String elenco;
     String autor;
     String direccion;
@@ -13,48 +10,13 @@ public class Obra {
     FechaHora[] fechas;
 
     public Obra(int id, String nombre, String descripcion, UbicacionObra ubicacion, String elenco, String autor, String direccion, String sinopsis, String tematica, FechaHora[] fechas) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.ubicacion = ubicacion;
+        super(id, nombre, descripcion, ubicacion);
         this.elenco = elenco;
         this.autor = autor;
         this.direccion = direccion;
         this.sinopsis = sinopsis;
         this.tematica = tematica;
         this.fechas = fechas;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public UbicacionObra getUbicacion() {
-        return ubicacion;
-    }
-
-    public void setUbicacion(UbicacionObra ubicacion) {
-        this.ubicacion = ubicacion;
     }
 
     public String getElenco() {
