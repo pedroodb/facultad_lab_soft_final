@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.example.facultad_lab_soft_final.Helpers.API;
 import com.example.facultad_lab_soft_final.Helpers.ActivitiesSection;
+import com.example.facultad_lab_soft_final.data.Notifications;
 import com.example.facultad_lab_soft_final.data.model.Actividad;
 import com.example.facultad_lab_soft_final.data.model.Actividades;
 import com.google.gson.Gson;
@@ -56,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 actividades = gson.fromJson(response,Actividades.class);
 
-                Map<Date, SortedSet<Actividad>> entry2 = actividades.listadoPorFechas();
                 for (Map.Entry<Date, SortedSet<Actividad>> entry : actividades.listadoPorFechas().entrySet()) {
                     sectionAdapter.addSection(new ActivitiesSection(new SimpleDateFormat("dd/MM/yyyy").format(entry.getKey()), new ArrayList<Actividad>(entry.getValue())));
                 }
@@ -87,5 +87,10 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("actividades",actividades.getActividades());
             startActivity(intent);
         }
+    }
+
+    public void openNotifications(MenuItem item) {
+        Intent intent = new Intent(this, Notifications.class);
+        startActivity(intent);
     }
 }
