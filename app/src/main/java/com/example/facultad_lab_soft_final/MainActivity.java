@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToMap(View view) {
         if(actividades != null) {
-            Intent intent = new Intent(this, MapsActivity.class);
+            Intent intent = new Intent(this, OSMapsActivity.class);
             intent.putExtra("actividades",actividades.getActividades());
             startActivity(intent);
         }

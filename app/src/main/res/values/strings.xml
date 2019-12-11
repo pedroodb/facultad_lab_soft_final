@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Facultad_lab_soft_final</string>
+    <string name="app_name">Teatro por la identidad</string>
     <string name="title_activity_login">Login</string>
     <string name="prompt_email">Usuario</string>
     <string name="prompt_password">Contrasena</string>
