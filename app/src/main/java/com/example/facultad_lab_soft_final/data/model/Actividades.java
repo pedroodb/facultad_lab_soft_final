@@ -12,6 +12,13 @@ public class Actividades {
         this.obras = obras;
     }
 
+    public ArrayList<Actividad> getActividades() {
+        ArrayList<Actividad> actividades = new ArrayList<Actividad>();
+        actividades.addAll(getGenerales());
+        actividades.addAll(getObras());
+        return actividades;
+    }
+
     public ArrayList<General> getGenerales() {
         return generales;
     }

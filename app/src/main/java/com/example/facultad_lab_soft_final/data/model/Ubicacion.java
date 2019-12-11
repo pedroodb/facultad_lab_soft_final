@@ -1,6 +1,8 @@
 package com.example.facultad_lab_soft_final.data.model;
 
-public class Ubicacion {
+import java.io.Serializable;
+
+public class Ubicacion implements Serializable {
 
     String descripcion;
     Double latitud;
