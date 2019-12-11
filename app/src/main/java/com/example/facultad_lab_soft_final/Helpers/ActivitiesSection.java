@@ -29,11 +29,17 @@ public class ActivitiesSection extends Section {
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView view;
+        final View view;
+        final TextView title;
+        final TextView description;
+        final TextView location;
 
         public ItemViewHolder(View view) {
             super(view);
-            this.view = (TextView)view;
+            this.view = view;
+            this.title = view.findViewById(R.id.title);
+            this.description = view.findViewById(R.id.description);
+            this.location = view.findViewById(R.id.location);
         }
     }
 
@@ -43,7 +49,7 @@ public class ActivitiesSection extends Section {
 
         HeaderViewHolder(View view) {
             super(view);
-            this.title = (TextView) view;
+            this.title = view.findViewById(R.id.title);
         }
     }
 
@@ -60,7 +66,11 @@ public class ActivitiesSection extends Section {
     @Override
     public void onBindItemViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
-        itemViewHolder.view.setText(actividades.get(i).getNombre());
+
+        Actividad activity = actividades.get(i);
+        itemViewHolder.title.setText(activity.getNombre());
+        itemViewHolder.description.setText(activity.getDescripcion());
+        itemViewHolder.location.setText(activity.getUbicacion().getDescripcion());
     }
 
     @Override
