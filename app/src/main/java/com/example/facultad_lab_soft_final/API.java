@@ -8,8 +8,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.facultad_lab_soft_final.data.model.Actividades;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 public class API {
 
@@ -31,7 +36,9 @@ public class API {
                 @Override
                 public void onResponse(String response) {
                     // Display the first 500 characters of the response string.
-                    Toast.makeText(activity,response,Toast.LENGTH_SHORT).show();
+                    Gson gson = new Gson();
+                    Actividades actividades = gson.fromJson(response,Actividades.class);
+                    Toast.makeText(activity,actividades.getGenerales().get(0).getDescripcion(),Toast.LENGTH_SHORT).show();
                 }
             }, new Response.ErrorListener() {
                 @Override
