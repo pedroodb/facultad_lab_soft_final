@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height = "match_parent">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activities"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/mapButton"
         android:layout_width="wrap_content"
@@ -14,6 +20,7 @@
         android:focusable="true"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_margin="20dp"
         android:onClick="goToMap" />
 
