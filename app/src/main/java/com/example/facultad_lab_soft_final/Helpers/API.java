@@ -1,4 +1,4 @@
-package com.example.facultad_lab_soft_final;
+package com.example.facultad_lab_soft_final.Helpers;
 
 import android.app.Activity;
 import android.widget.Toast;

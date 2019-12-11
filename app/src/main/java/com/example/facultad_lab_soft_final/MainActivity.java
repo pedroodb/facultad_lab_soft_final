@@ -1,6 +1,8 @@
 package com.example.facultad_lab_soft_final;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,25 +12,47 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Response;
+import com.example.facultad_lab_soft_final.Helpers.API;
+import com.example.facultad_lab_soft_final.Helpers.ActivitiesSection;
 import com.example.facultad_lab_soft_final.data.model.Actividades;
 import com.google.gson.Gson;
+
+import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
     Actividades actividades = null;
 
+    RecyclerView recyclerView;
+    SectionedRecyclerViewAdapter sectionAdapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Configura recyclerView
+        recyclerView = (RecyclerView) findViewById(R.id.activities);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Create an instance of SectionedRecyclerViewAdapter
+        sectionAdapter = new SectionedRecyclerViewAdapter();
+
+        // Realiza request de actividades
         API api = new API(this);
         api.request("actividades", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                // Display the first 500 characters of the response string.
+
                 Gson gson = new Gson();
                 actividades = gson.fromJson(response,Actividades.class);
-                Toast.makeText(MainActivity.this,actividades.getGenerales().get(0).getDescripcion(),Toast.LENGTH_SHORT).show();
+
+                // Add your Sections
+                sectionAdapter.addSection(new ActivitiesSection("Seccion1",actividades.getActividades()));
+                sectionAdapter.addSection(new ActivitiesSection("Seccion2",actividades.getActividades()));
+                recyclerView.setAdapter(sectionAdapter);
             }
         });
     }
