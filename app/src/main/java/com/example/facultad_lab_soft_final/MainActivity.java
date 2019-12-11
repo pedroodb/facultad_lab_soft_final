@@ -14,14 +14,12 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.example.facultad_lab_soft_final.Helpers.API;
 import com.example.facultad_lab_soft_final.Helpers.ActivitiesSection;
-import com.example.facultad_lab_soft_final.data.Notifications;
 import com.example.facultad_lab_soft_final.data.model.Actividad;
 import com.example.facultad_lab_soft_final.data.model.Actividades;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
 import java.util.SortedSet;
