@@ -1,4 +1,4 @@
-package com.example.facultad_lab_soft_final.data;
+package com.example.facultad_lab_soft_final;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,15 +9,12 @@ import android.os.Bundle;
 import com.android.volley.Response;
 import com.example.facultad_lab_soft_final.Helpers.API;
 import com.example.facultad_lab_soft_final.Helpers.NotificationsSection;
-import com.example.facultad_lab_soft_final.R;
 import com.example.facultad_lab_soft_final.data.model.Notification;
 import com.google.gson.Gson;
 
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
