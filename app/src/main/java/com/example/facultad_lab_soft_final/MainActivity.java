@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
                 actividades = gson.fromJson(response,Actividades.class);
 
                 // Add your Sections
-                sectionAdapter.addSection(new ActivitiesSection("Seccion1",actividades.getActividades()));
-                sectionAdapter.addSection(new ActivitiesSection("Seccion2",actividades.getActividades()));
+                sectionAdapter.addSection(new ActivitiesSection("Lunes 1ro de mayo",actividades.getActividades()));
+                sectionAdapter.addSection(new ActivitiesSection("Miercoles 3ro de febrero",actividades.getActividades()));
                 recyclerView.setAdapter(sectionAdapter);
             }
         });

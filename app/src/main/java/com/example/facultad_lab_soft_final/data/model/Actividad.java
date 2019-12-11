@@ -1,6 +1,7 @@
 package com.example.facultad_lab_soft_final.data.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public abstract class Actividad implements Serializable {
 
@@ -47,4 +48,6 @@ public abstract class Actividad implements Serializable {
     public void setUbicacion(Ubicacion ubicacion) {
         this.ubicacion = ubicacion;
     }
+
+    //public abstract void listarPorFecha(ArrayList<Actividad> actividades);
 }
