@@ -15,34 +15,35 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class RegisterActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_login);
 
         auth = FirebaseAuth.getInstance();
     }
 
-    public void signUp(View view) {
+    public void login(View view) {
         String email = ((EditText)findViewById(R.id.email_edt_text)).getText().toString();
         String password = ((EditText)findViewById(R.id.pass_edt_text)).getText().toString();
 
         if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
             Toast.makeText(this, "No pueden quedar campos sin completar", Toast.LENGTH_LONG).show();
         } else{
-            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(RegisterActivity.this, "Se completo el registro exitosamente", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
                     finish();
                 }else {
-                    Toast.makeText(RegisterActivity.this, "Registration Failed", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Registration Failed", Toast.LENGTH_LONG).show();
                 }
                 }
 
@@ -50,8 +51,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    public void toLogin(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
+    public void toRegister(View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
 }

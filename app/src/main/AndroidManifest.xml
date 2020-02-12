@@ -21,6 +21,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".OSMapsActivity" />
         <activity android:name=".Notifications" />
@@ -40,11 +41,7 @@
             android:name=".ObraActivity"
             android:label="@string/title_activity_obra"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity
-            android:name=".MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
