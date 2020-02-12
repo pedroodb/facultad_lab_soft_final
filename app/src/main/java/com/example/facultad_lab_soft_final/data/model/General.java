@@ -1,13 +1,8 @@
 package com.example.facultad_lab_soft_final.data.model;
 
-import com.google.common.collect.TreeMultiset;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
 public class General extends Actividad {
 
     Ubicacion ubicacion;

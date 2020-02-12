@@ -1,6 +1,7 @@
 package com.example.facultad_lab_soft_final.data;
 
 import com.example.facultad_lab_soft_final.data.model.LoggedInUser;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 
@@ -9,7 +10,10 @@ import java.io.IOException;
  */
 public class LoginDataSource {
 
+    private FirebaseAuth auth;
+
     public Result<LoggedInUser> login(String username, String password) {
+        auth = FirebaseAuth.getInstance();
 
         try {
             // TODO: handle loggedInUser authentication

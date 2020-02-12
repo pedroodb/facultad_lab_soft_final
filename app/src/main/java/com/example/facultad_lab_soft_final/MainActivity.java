@@ -16,7 +16,6 @@ import com.example.facultad_lab_soft_final.Helpers.API;
 import com.example.facultad_lab_soft_final.Helpers.ActivitiesSection;
 import com.example.facultad_lab_soft_final.data.model.Actividad;
 import com.example.facultad_lab_soft_final.data.model.Actividades;
-import com.google.common.collect.TreeMultiset;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
@@ -24,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
-import java.util.SortedSet;
 
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
@@ -85,12 +83,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void goToMap(View view) {
+    public void toMap(View view) {
         if(actividades != null) {
             Intent intent = new Intent(this, OSMapsActivity.class);
             intent.putExtra("actividades",actividades.getActividades());
             startActivity(intent);
         }
+    }
+
+    public void toRegister(View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     public void openNotifications(MenuItem item) {
